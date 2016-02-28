@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<link href="/static/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+   <script src="//cdn.bootcss.com/jquery/1.11.3/jquery.min.js"></script>
+   <script src="/static/bootstrap/js/bootstrap.min.js"></script>
+<script type="text/jscript" src="/static/js_form_submit.js"></script>
+  <link type="text/css"  rel="stylesheet" href="/static/Stu_CSS2.css">
+<title>{% block title %}{% endblock %}</title>
+<style>
+.div_dpht{background:rgba(100%,100%,100%,0.3) none repeat scroll !important; /*实现FF背景透明，文字不透明*/
+background:#FFFFFF; filter:Alpha(opacity=20);/*实现IE背景透明*/}
+div p{ position:relative;}/*实现IE文字不透明*/
+'.color1{background:#E8CCFF; color:#000000}'
+.color2{background: #F5FFFA ;}
+.divcss1{width:50px; }
+.divcss2{ width:300px;text-align:center;}
+.box1{background-image :url (http://www.divcss5.com/img201301/divcss5-logo-2013.gif);
+background-repeat : no-repeat;background-position : 5px 6px }
+.divcss5-right{float:right} 
+img {
+max-width:330px;
+_width:expression_r(this.width<200px?"auto":"200px");
+} 
+</style>
+</head>
+<body class='color2' style="background-image: url('/static/200815121123445_2.jpg'); background-attachment: fixed">
+
+ {% block content %}{% endblock %}
+ {% block footer %}
+<hr>
+
+
+	<div class="col-md-6">
+		<address class="text-center"><small><u>微固快讯:www.me.uestc.edu.cn/stu<br />
+		微电子与固体电子学院<br>版权所有  © copyright 2013</u></small></address>
+</div>
+	<div class="col-md-6">
+		<address class="text-center"><small><u>联系方式:83202234<br />
+		联系地址:微固楼428<br>微互联工作室</u></small></address>
+</div>
+
+ {% endblock%}
+</body>
+</html>

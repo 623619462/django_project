@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<link href="/static/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+   <script src="//cdn.bootcss.com/jquery/1.11.3/jquery.min.js"></script>
+   <script src="/static/bootstrap/js/bootstrap.min.js"></script>
+<script type="text/jscript" src="/static/js_form_submit.js"></script>
+  <link type="text/css"  rel="stylesheet" href="/static/Stu_CSS2.css">
+<link type="text/css" rel="stylesheet" href="/static/Stu_CSS_Submit.css">
+<title>信息管理系统</title>
+<style>
+.div_dpht{background:rgba(100%,100%,100%,0.5) none repeat scroll !important; /*实现FF背景透明，文字不透明*/
+background:#FFFFFF; filter:Alpha(opacity=20);/*实现IE背景透明*/}
+div p{ position:relative;}/*实现IE文字不透明*/
+'.color1{background:#E8CCFF; color:#000000}'
+.color2{background: #F5FFFA ;}
+.divcss1{width:50px; }
+.divcss2{ width:300px;text-align:center;}
+.box1{background-image :url (http://www.divcss5.com/img201301/divcss5-logo-2013.gif);
+background-repeat : no-repeat;background-position : 5px 6px }
+.divcss5-right{float:right} 
+img {
+max-width:300px;
+_width:expression_r(this.width<200px?"auto":"200px");
+} 
+</style>
+</head>
+<body class='color2'  style="background-image: url('/static/200815121123445_2.jpg'); background-attachment: fixed">
+<nav class="navbar navbar-default ">
+  <div class="container-fluid " >
+    <div class="navbar-header">
+      <a class="navbar-brand" href="#">
+        <img alt="Brand" class='pwl_spaceimg' src="http://www.me.uestc.edu.cn/image/logo.png">
+      </a>
+    </div>
+
+<div class="navbar-text col-lg-5 col-xs-3 col-md-3 text-center  " style='font-size:24px '  >
+<strong class="text-center " ><font color="#000000">学生信息管理系统</font></strong>
+</div>
+</br>
+<div class="collapse navbar-collapse divcss5-right">
+<a href='http://www.me.uestc.edu.cn' type="button" class="btn btn-default navbar-btn"> 
+<span class="glyphicon glyphicon-home" aria-hidden="true"></span>首页</a>
+<a href='http://www.me.uestc.edu.cn/stu/index.php/Login/' type="button" class="btn btn-default navbar-btn"> 
+<span class="glyphicon glyphicon-user" aria-hidden="true">
+</span>切换</a>
+<a href='/app/upload/' type="button" class="btn btn-default navbar-btn"> 
+<span class="glyphicon glyphicon-upload" aria-hidden="true">
+</span>导入</a>
+<a href='/app/manage/' type="button" class="btn btn-default navbar-btn"> 
+<span class="glyphicon glyphicon-cog" aria-hidden="true">
+</span>管理</a>
+</div>
+</div>
+</div>
+</nav>
+            <div style="text-align:center; margin-bottom:-100px; font-size:35px; margin-top:70px;"><b>大学档案</b></div>
+	<form method='POST' enctype="multipart/form-data">
+            <div class="table2 div_dpht">
+    			<div class="scholarship">奖学金</div>
+                <div class="scholarbox">
+			<textarea class="form-control"  name='scholarship' rows="3" style="width:692px;height:98px;resize:none ">{{stu.scholarship}}</textarea>	
+                </div>
+		<div class="scholarship">助学金</div>
+               <div class="scholarbox">
+			<textarea class="form-control" name='stipend' rows="3" style="width:692px;height:98px;resize:none">{{stu.stipend}}</textarea>	
+                </div>
+                <div class="scholarship">获奖经历</div>
+                 <div class="scholarbox">
+			<textarea class="form-control" name='honour' rows="3" style="width:692px;height:98px;resize:none">{{stu.honour}}</textarea>	
+                </div>
+                <div class="scholarship">干部经历</div>
+                <div class="scholarbox">
+			<textarea class="form-control" name='leader' rows="3" style="width:692px;height:98px;resize:none">{{stu.leader}}</textarea>	
+                </div>
+                <div class="scholarship">出境经历</div>
+               <div class="scholarbox">
+			<textarea class="form-control" name='abroad' rows="3" style="width:692px;height:98px;resize:none">{{stu.abroad}}</textarea>	
+                </div>
+                <div class="scholarship">学术经历</div>
+               <div class="scholarbox">
+			<textarea class="form-control" name='academic' rows="3" style="width:692px;height:98px;resize:none">{{stu.academic}}</textarea>	
+                </div>
+		<div class="scholarship">学籍异动</div>
+                 <div class="scholarbox">
+			<textarea class="form-control" name='roll' rows="3" style="width:692px;height:98px;resize:none">{{stu.roll}}</textarea>	
+                </div>
+                <div class="scholarship">实习经历</div>
+                <div class="scholarbox">
+			<textarea class="form-control" name='practice' rows="3" style="width:692px;height:98px;resize:none">{{stu.practice}}</textarea>	
+                </div>
+              <div class="scholarship">毕业去向</div>
+             <div class="scholarbox">
+			<textarea class="form-control" name='career' rows="3" style="width:692px;height:98px;resize:none">{{stu.career}}</textarea>	
+                </div>
+		<div class="scholarship">谈话记录</div>
+                <div class="scholarbox">
+			<textarea class="form-control" name='talk' rows="3" style="width:692px;height:98px;resize:none">{{stu.talk}}</textarea>	
+                </div>
+		<div class="scholarship">备注</div>
+                <div class="scholarbox">
+			<textarea class="form-control" name='remark' rows="3" style="width:692px;height:98px;resize:none">{{stu.remark}}</textarea>	
+                </div>
+           <input type="submit" class = 'col-md-3' value="提交" id="confim"> 
+ </div>
+</form>
+    </div>
+
+</body>
+</html>

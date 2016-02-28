@@ -1,0 +1,190 @@
+{% extends "base.html" %}
+{% block title %}信息管理系统{% endblock %}
+{% block content %}
+<nav class="navbar navbar-default ">
+  <div class="container-fluid " >
+    <div class="navbar-header">
+      <a class="navbar-brand" href="#">
+        <img alt="Brand" class='pwl_spaceimg' src="http://www.me.uestc.edu.cn/image/logo.png">
+      </a>
+    </div>
+
+<div class="navbar-text col-lg-5 col-xs-3 col-md-3 text-center " style='font-size:24px'  >
+<strong  class="text-center " ><font color="#000000">学生信息管理系统</font></strong>
+</div>
+</br>
+<div class="collapse navbar-collapse divcss5-right">
+<a href='http://www.me.uestc.edu.cn' type="button" class="btn btn-default navbar-btn"> 
+<span class="glyphicon glyphicon-home" aria-hidden="true"></span>首页</a>
+<a href='http://www.me.uestc.edu.cn/stu/index.php/Login/' type="button" class="btn btn-default navbar-btn"> 
+<span class="glyphicon glyphicon-user" aria-hidden="true">
+</span>切换</a>
+{%if auth%}
+<a href='/app/upload/' type="button" class="btn btn-default navbar-btn"> 
+<span class="glyphicon glyphicon-upload" aria-hidden="true">
+</span>导入</a>
+<a href='/app/manage/' type="button" class="btn btn-default navbar-btn"> 
+<span class="glyphicon glyphicon-cog" aria-hidden="true">
+</span>管理</a>
+{% endif %}
+</div>
+</div>
+</div>
+</nav>
+<div style="position:relative " >
+	<div>   
+        <div style="text-align:center; margin-bottom:10px; font-size:35px; margin-top:60px"><strong>基本信息表</strong></div>
+        	<div class="table1 div_dpht " >
+                    <div class="line120">
+                    	<div class="line40">
+                    		<div class="caption">姓名</div>
+                        	<div id="student_name"> {{stu.name}}</div>
+                        	<div class="caption">专业</div>
+                        	<div id="student_major">{{stu.major}}</div>
+                    	</div>
+                    	<div class="line40">
+                        	<div class="caption">学号</div>
+                       	    <div id="student_number">{{stu.stu_id}}
+                            </div>
+                        	<div class="caption">班号</div>
+                       	    <div id="student_class">{{stu.class_field}}
+                            </div>
+                    	</div>
+                    	<div class="line40">
+                    		<div class="caption">性别</div>
+                        	<div id="student_sex">{{stu.gender}}
+                            </div>
+                        	<div class="caption">籍贯</div>
+                        	<div id="native_place">{{stu.nativeplace}}
+                            </div>
+                        	<div class="caption">民族</div>
+                        	<div id="nation">{{stu.nation}}
+                            </div>
+                   		</div>
+                	</div>
+               		<div id="student_photo"><img src='{{img}}' /></div>
+                    	<div class="line60">
+                    		<div class="caption">电话</div>
+                            <div id="student_telnumber">{{stu.phone}} </div>
+                            <div class="caption">QQ</div>
+                            <div id="qq_number"> {{stu.qq}}</div>
+                            <div class="caption">邮箱</div>
+                            <div id="email_add">{{stu.email}} </div>
+                        </div>
+                        <div class="line60">
+                        	<div class="caption">政治面貌</div>
+                            <div id="political">{{stu.polity}} </div>
+                            <div class="caption">身份证号</div>
+                            <div id="student_id_number"> {{stu.idcard}}</div>
+                            <div class="caption">出生年月</div>
+                            <div id="birthday"> {{stu.birth}}</div>
+                        </div>
+                        <div class="line60">
+                        	<div class="caption">宿舍（栋）</div>
+                            <div id="dormitory_build"> {{stu.building}}</div>
+                            <div class="caption">宿舍（号）</div>
+                            <div id="dormitory_number"> {{stu.room}}</div>
+                            <div class="caption">特长</div>
+                            <div id="specialty">{{stu.specialty}} </div>
+                        </div>
+                        <div class="line60">
+                        	<div class="caption">户口迁移</div>
+                            <div id="census_migration">{{stu.dommove}}</div>
+                            <div class="caption">户口所在地</div>
+                            <div id="pop_location">{{stu.domplacenew}} </div>
+                            <div class="caption">高考省市</div>
+                            <div id="prov_exam"> {{stu.registplace}}</div>                            
+                        </div>
+                        <div class="line60">
+                            <div class="caption">考生类型</div>
+                            <div id="student_type">{{stu.stutypex}}</div>
+                            <div class="caption">考生类别</div>
+                            <div id="student_cate">{{stu.stutypeb}}</div>
+                            <div class="caption">入学前单位</div>
+                            <div id="before_college">{{stu.highschool}}</div>
+                        </div>
+                        <div class="line60">
+                        	<div class="caption">家庭邮编</div>
+                            <div id="address_number">{{stu.postcode}}</div>
+                            <div class="caption">家庭电话</div>
+                            <div id="home_tel_number">{{stu.homephone}}</div>
+                            <div class="caption">家庭地址</div>
+                            <div id="home_address">{{stu.address}}</div>
+                        </div>
+                        <div class="line60">
+                        	<div class="caption">父亲姓名</div>
+                            <div id="dad_neme">{{stu.faname}}</div>
+                            <div class="caption">工作单位</div>
+                            <div id="dad_work_add">{{stu.faworkunit}}</div>
+                            <div class="caption">父亲电话</div>
+                            <div id="dad_tel_number">{{stu.faphone}}</div>
+                        </div>
+                        <div class="line60">
+                        	<div class="caption">母亲姓名</div>
+                            <div id="mom_name">{{stu.maname}}</div>
+                            <div class="caption">工作单位</div>
+                            <div id="mom_work_add">{{stu.maworkplace}}</div>
+                            <div class="caption">母亲电话</div>
+                            <div id="mom_tel_number">{{stu.maphone}}</div>
+                        </div>
+                        
+            </div>
+
+{%if auth%}
+            <div style="text-align:center; margin-bottom:-100px; font-size:35px; margin-top:70px;"><b>大学档案</b></div>
+            <div class="table2 div_dpht">
+    			<div class="scholarship">奖学金</div>
+                <div class="scholarbox">
+                	<textarea disabled class="scholararea">{{stu.scholarship}}</textarea>
+                </div>
+		<div class="scholarship">助学金</div>
+                <div class="scholarbox">
+                	<textarea disabled class="scholararea">{{stu.stipend}}</textarea>
+                </div>
+                <div class="scholarship">获奖经历</div>
+                <div class="scholarbox">
+                	<textarea disabled class="scholararea">{{stu.honour}}</textarea>
+                </div>
+                <div class="scholarship">干部经历</div>
+                <div class="scholarbox">
+                	<textarea disabled class="scholararea">{{stu.leader}}</textarea>
+                </div>
+                <div class="scholarship">出境经历</div>
+                <div class="scholarbox">
+                	<textarea disabled class="scholararea">{{stu.abroad}}</textarea>
+                </div>
+                <div class="scholarship">学术经历</div>
+                <div class="scholarbox">
+                	<textarea disabled class="scholararea">{{stu.academic}}</textarea>
+                </div>
+		<div class="scholarship">学籍异动</div>
+                <div class="scholarbox">
+                	<textarea disabled class="scholararea">{{stu.roll}}</textarea>
+                </div>
+                <div class="scholarship">实习经历</div>
+                <div class="scholarbox">
+                	<textarea disabled class="scholararea">{{stu.practice}}</textarea>
+                </div>
+                <div class="scholarship">毕业去向</div>
+                <div class="scholarbox">
+                	<textarea disabled class="scholararea">{{stu.career}}</textarea>
+                </div>
+		<div class="scholarship">谈话记录</div>
+                <div class="scholarbox">
+                	<textarea disabled class="scholararea">{{stu.talk}}</textarea>
+                </div>
+		<div class="scholarship">备注</div>
+                <div class="scholarbox">
+                	<textarea disabled class="scholararea">{{stu.remark}}</textarea>
+                </div>
+            </div>
+    </div>
+{%endif%}
+{% if auth%}
+<div><a href ="/app/record/?uid={{stu.uid}}"  type="button" class="btn btn-primary "  id="submit">档案修改 </a></div>
+{%endif%}
+{% if not auth%}
+<div><a href ="/app/submit"  type="button" class="btn btn-primary "  id="submit">信息修改 </a></div>
+{%endif%}
+
+{% endblock %}

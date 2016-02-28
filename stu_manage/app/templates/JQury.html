@@ -1,0 +1,178 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">  
+<html>  
+    <head>  
+        <title>Welcome to schedule main page</title>  
+        <style>  
+            html, body{  
+                margin: 0;  
+                padding: 0;  
+                height: 100%;  
+                background-color: #fff;  
+                font-size: 10pt;  
+                font-family: Arial, verdana;  
+            }  
+   
+   
+            #pagewraper{  
+                width: 1000px;  
+                margin: 0 auto;  
+            }  
+              
+            .tb_job_list{  
+                width: 1400px;  
+                border-collapse: collapse;  
+            }  
+              
+            .tb_job_list td{  
+                border: solid #dadada 1px;  
+                height: 30px;  
+                font-size: 10pt;  
+                color: #555555;  
+   
+                background-color: #fff;c  
+            }  
+              
+            .tb_job_list thead td{  
+                height: 40px;  
+                font-weight: bold;  
+                color: #999;  
+                background-color: #fffceb;  
+            }  
+   
+              
+            a img{  
+                border: none;  
+            }  
+        </style>  
+          
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.4.4/jquery.min.js"></script>  
+    </head>  
+    <body>  
+        <div id="pagewraper">  
+            <div id="main">  
+                <div class="border_l_r">  
+                    <div style="overflow: scroll; border: solid #dadada 1px;" mce_style="overflow: scroll; border: solid #dadada 1px;">  
+                    <table class="tb_job_list" id="jobsList">  
+                        <thead>  
+                            <tr>  
+                                <td width="200px" style="border-left: none;" mce_style="border-left: none;">Job Name</td>  
+                                <td>Job GroupName</td>  
+                                <td>Job Description</td>  
+                                <td>Job Status</td>  
+                                <td>Last Run Status</td>  
+                                <td>Command</td>  
+                                <td>Run Machine</td>  
+                                <td>Last Run Time</td>  
+                                <td>Next Run Time</td>  
+                                <td colspan="5" align="center">Action</td>  
+                            </tr>  
+                        </thead>  
+                        <tbody>  
+                              
+                          <tr><td><a href="mailto:sunxing007@tom.com?Subject=Sendevent Request for App ID: 150801&body=Job Name: " mce_href="mailto:sunxing007@tom.com?Subject=Sendevent Request for App ID: 150801&body=Job Name: "><img style="float: right;" mce_style="float: right;" src="images/mail.gif" mce_src="images/mail.gif" title="Send mail."/></a><a href="#" mce_href="#">Job 1</a></td><td colspan='13'>desc</td></tr>  
+                          <tr>  
+                            <td>JOb 2</td>  
+                            <td>JOb 2</td>  
+                            <td>JOb 2</td>  
+                            <td>JOb 2</td>  
+                            <td>JOb 2</td>  
+                            <td>JOb 2</td>  
+                            <td>JOb 2</td>  
+                            <td>JOb 2</td>  
+                            <td>JOb 2</td>  
+                            <td>JOb 2</td>  
+                            <td>JOb 2</td>  
+                            <td>JOb 2</td>  
+                            <td>JOb 2</td>  
+                            <td>JOb 2</td>  
+                          </tr>  
+                          <tr><td>JOb 3</td><td colspan='13'>desc</td></tr>  
+                        </tbody>  
+                    </table>  
+                    </div>  
+                    <br />  
+                </div>  
+            </div>  
+        </div>      
+    </body>  
+</html>  
+  
+<script>  
+$(document).ready(function(){  
+    var dataTb = $('#jobsList').first();  
+    var newTb = $('<table><tbody></tbody></table');  
+    $('body').append(newTb);  
+    newTb.css({  
+        'position':'absolute',   
+        'left':dataTb.attr('offsetLeft'),   
+        'top:': dataTb.attr('offsetTop'),   
+        'border-left-color':dataTb.css('border-left-color'),  
+        'border-right-color':dataTb.css('border-right-color'),  
+        'border-top-color':dataTb.css('border-top-color'),  
+        'border-bottom-color':dataTb.css('border-bottom-color'),  
+        'border-left-style':dataTb.css('border-left-style'),  
+        'border-right-style':dataTb.css('border-right-style'),  
+        'border-top-style':dataTb.css('border-top-style'),  
+        'border-bottom-style':dataTb.css('border-bottom-style'),  
+        'border-left-width':dataTb.css('border-left-width'),  
+        'border-right-width':dataTb.css('border-right-width'),  
+        'border-top-width':dataTb.css('border-top-width'),  
+        'border-bottom-width':dataTb.css('border-bottom-width'),  
+        'overflow':'hidden',  
+        'height':dataTb.attr('offsetHeight'),  
+        'width':dataTb.find('td').first().attr('offsetWidth') + 2,  
+        'border-collapse':dataTb.css('border-collapse')  
+    });  
+    newTb.offset(dataTb.offset());  
+    var oldTrs = dataTb.find('tr');  
+    var newTbody = newTb.find('tbody');  
+    var adjust1 = 0;  
+    var adjust2 = 0;  
+    if ($.browser.msie){  
+        if($.browser.version == '8.0'){  
+            adjust1 = 1;  
+        }  
+    }  
+    else if($.browser.mozilla){  
+        adjust2 = 4;  
+    }  
+      
+    oldTrs.each(function(i){  
+        var currentTD = $(this).children().first();  
+        var newTr = $('<tr><td>' + currentTD.html() + '</td></tr>');  
+        newTr.css({  
+            'background-color':currentTD.css('background-color')  
+        });  
+        newTr.find('td').css({  
+            'font-weight':currentTD.css('font-weight'),  
+            'font-size': currentTD.css('font-size'),  
+            'color': currentTD.css('color'),  
+            'background-color':currentTD.css('background-color'),  
+            'padding-left': currentTD.css('padding-left'),  
+            'padding-right': currentTD.css('padding-right'),  
+            'padding-top': currentTD.css('padding-top'),  
+            'padding-bottom': currentTD.css('padding-bottom'),  
+            'margin-left': currentTD.css('margin-left'),  
+            'margin-right': currentTD.css('margin-right'),  
+            'margin-top': currentTD.css('margin-top'),  
+            'margin-bottom': currentTD.css('margin-bottom'),  
+            'height': parseInt(currentTD.css('height')) + adjust2,  
+            'overflow': 'hidden',  
+            'border-left-color':currentTD.css('border-left-color'),  
+            'border-right-color':currentTD.css('border-right-color'),  
+            'border-top-color':currentTD.css('border-top-color'),  
+            'border-bottom-color':currentTD.css('border-bottom-color'),  
+            'border-left-style':currentTD.css('border-left-style'),  
+            'border-right-style':currentTD.css('border-right-style'),  
+            'border-top-style':currentTD.css('border-top-style'),  
+            'border-bottom-style':currentTD.css('border-bottom-style'),  
+            'border-left-width':currentTD.css('border-left-width'),  
+            'border-right-width':currentTD.css('border-right-width'),  
+            'border-top-width':currentTD.css('border-top-width'),  
+            'border-bottom-width':currentTD.css('border-bottom-width')  
+        });  
+        newTbody.append(newTr);  
+    });  
+    newTb.find('td').first().height(40-1);  
+});  
+</script> 

@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+<meta charset="UTF-8">
+<title>TEST</title>
+<meta http-equiv="Content-Type" content="text/html" />
+<link type="text/css" rel="stylesheet" href="Stu_CSS_Submit.css">
+<script type="text/jscript" src="js_form_submit.js"></script>
+ <link rel="stylesheet" href="http://apps.bdimg.com/libs/bootstrap/3.3.0/css/bootstrap.min.css">  
+  <script src="http://apps.bdimg.com/libs/jquery/2.1.1/jquery.min.js"></script>
+  <script src="http://apps.bdimg.com/libs/bootstrap/3.3.0/js/bootstrap.min.js"></script>
+</head>
+
+<body>
+<div class="top"></div>
+<div>
+	<div>   
+    	<form method="post" action="#" onsubmit="return checkForm()" onreset="return resetForm()">
+        <div style="text-align:center; margin-bottom:10px; font-size:35px; margin-top:60px"><strong>基本信息表</strong></div>
+        	<div class="table">
+                    <div class="line120">
+                    	<div class="line40">
+                    		<div class="caption">姓名</div>
+                        	<div id="student_name">
+                            	<input type="text" class="input_style1">
+                            </div>
+                        	<div class="caption">专业</div>
+                        	<div id="student_major">
+                            	<select name="major">
+                                	<option>...</option>
+                                    <option>电子科学与技术</option>
+                                    <option>微电子科学与工程</option>
+                                    <option>集成电路设计与集成系统</option>
+                                    <option>应用化学</option>
+                                </select>
+                            </div>
+                    	</div>
+                    	<div class="line40">
+                        	<div class="caption">学号</div>
+                       	    <div id="student_number">
+                            	<input type="text" class="input_style1">
+                            </div>
+                        	<div class="caption">班号</div>
+                       	    <div id="student_class">
+                            	<input type="text" style="width:200px;">
+                            </div>
+                    	</div>
+                    	<div class="line40">
+                    		<div class="caption">性别</div>
+                        	<div id="student_sex">
+                            	<select name="sex">
+                                	<option selected>...</option>
+                                    <option>男</option>
+                                    <option>女</option>
+                                </select>
+                            </div>
+                        	<div class="caption">籍贯</div>
+                        	<div id="native_place">
+                            	<input type="text" style="width:120px;">
+                            </div>
+                        	<div class="caption">民族</div>
+                        	<div id="nation">
+                            	<input type="text" style="width:90px;">
+                            </div>
+                   		</div>
+                	</div>
+               		<div id="student_photo">
+                    	<div>
+                        	<p>请上传个人照片</p>
+                        	<br>
+                        	<input type="file" name="uploadFile" style="width:70px;">
+                        </div>
+                    </div>
+                    	<div class="line60">
+                    		<div class="caption">电话</div>
+                            <div id="student_telnumber">
+                            	<input type="tel" class="input_style1">
+                            </div>
+                            <div class="caption">QQ</div>
+                            <div id="qq_number">
+                            	<input type="text" style="width:120px;">
+                            </div>
+                            <div class="caption">邮箱</div>
+                            <div id="email_add">
+                            	<input type="email" style="width:210px;">
+                            </div>
+                        </div>
+                        <div class="line60">
+                        	<div class="caption">政治面貌</div>
+                            <div id="political">
+                            	<select name="political"> 
+                                	<option>...</option>
+                                	<option>群众</option>
+                                    <option>共青团员</option>
+                                    <option>预备党员</option>
+                                    <option>中共党员</option>
+                                    <option>民主党派</option>
+                                </select>
+                            </div>
+                            <div class="caption">身份证号</div>
+                            <div id="student_id_number">
+                            	<input type="text" style="width:210px;">
+                            </div>
+                            <div class="caption">出生年月</div>
+                            <div id="birthday">
+                            	<input type="text" style="width:120px;">
+                            </div>
+                        </div>
+                        <div class="line60">
+                        	<div class="caption">宿舍<sub>栋</sub></div>
+                            <div id="dormitory_build">
+                            	<input type="text" class="input_style1">
+                            </div>
+                            <div class="caption">宿舍<sub>号</sub></div>
+                            <div id="dormitory_number">
+                            	<input type="text" style="width:40px;">
+                            </div>
+                            <div class="caption">特长</div>
+                            <div id="specialty">
+                            	<input type="text" style="width:307px;">
+                            </div>
+                        </div>
+                        <div class="line60">
+                        	<div class="caption">户口迁移</div>
+                            <div id="census_migration">
+                            	<select name="migration">
+                                	<option selected>...</option>
+                                	<option>是</option>
+                                    <option>否</option>
+                                </select>
+                            </div>
+                            <div class="caption">户口所在地</div>
+                            <div id="pop_location">
+                            	<input type="text" style="width:130px;">
+                            </div>
+                            <div class="caption">高考省市</div>
+                            <div id="prov_exam">
+                            	<input type="text" style="width:215px;">
+                            </div>                            
+                        </div>
+                        <div class="line60">
+                            <div class="caption">考生类型</div>
+                            <div id="student_type">
+                            	<select name="stu_type">
+									<option selected>...</option>                                	
+                                    <option>普通</option>
+                                    <option>特长生</option>
+                                    <option>自主招生</option>
+                                    <option>少数民族预科</option>
+                                </select>
+                            </div>
+                            <div class="caption">考生类别</div>
+                            <div id="student_cate">
+                            	<select name="stu_cate">
+                                	<option>...</option>
+                                	<option>城镇应届</option>
+                                    <option>城镇往届</option>
+                                    <option>农村应届</option>
+                                    <option>农村往届</option> 
+                                </select>
+                            </div>
+                            <div class="caption">入学前单位</div>
+                            <div id="before_college">
+                            	<input type="text" style="width:215px;">
+                            </div>
+                        </div>
+                        <div class="line60">
+                        	<div class="caption">家庭邮编</div>
+                            <div id="address_number">
+                            	<input type="text" class="input_style1">
+                            </div>
+                            <div class="caption">家庭电话</div>
+                            <div id="home_tel_number">
+                            	<input type="tel" style="width:130px;">
+                            </div>
+                            <div class="caption">家庭地址</div>
+                            <div id="home_address">
+                            	<input type="text" style="width:213px;">
+                            </div>
+                        </div>
+                        <div class="line60">
+                        	<div class="caption">父亲姓名</div>
+                            <div id="dad_neme">
+                            	<input type="text" class="input_style1">
+                            </div>
+                            <div class="caption">工作单位</div>
+                            <div id="dad_work_add">
+                            	<input type="text" style="width:226px;">
+                            </div>
+                            <div class="caption">父亲电话</div>
+                            <div id="dad_tel_number">
+                            	<input type="tel" style="width:120px;">
+                            </div>
+                        </div>
+                        <div class="line60">
+                        	<div class="caption">母亲姓名</div>
+                            <div id="mom_name">
+                            	<input type="text" class="input_style1">
+                            </div>
+                            <div class="caption">工作单位</div>
+                            <div id="mom_work_add">
+                            	<input type="text" style="width:226px;">
+                            </div>
+                            <div class="caption">母亲电话</div>
+                            <div id="mom_tel_number">
+                            	<input type="tel" style="width:120px;">
+                            </div>
+                        </div>
+                        <div>
+                        	<p style="float:left;"><input type="submit" value="提交" id="confim"></p>
+                       	 	<p style="float:left;"><input type="reset" value="重置"  id="reset"></p>
+                        </div>
+            </div>
+        </form>
+    </div>
+<div class="bottom"></div>
+</div>
+</body>
+</html>
+

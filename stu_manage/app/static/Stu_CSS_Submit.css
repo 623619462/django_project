@@ -1,0 +1,384 @@
+@charset "gb2312";
+/* CSS Document */
+body{
+		margin:0px;
+}
+div{
+		margin:auto;
+}
+input{
+	text-align:center;
+	font-size-adjust:inherit;
+	height:28px;
+	overflow:auto;
+}
+.input_style1{
+	border: 1 px solid;
+	width:140px;
+	height:28px;
+	font-size:16px;
+	text-align:center;
+	text-justify:auto;
+}
+.top{
+	position:fixed; 
+	top:0; 
+	left:0; 
+	width:100%; 
+	height:40px; 
+	background-color:#6B6B6B;
+	margin-bottom:10px;
+	height:40px; 
+	background-color:#6B6B6B; 
+	margin-bottom:10px;
+}
+.bottom{
+	position:fixed; 
+	bottom:0; left:0; 
+	width:100%; 
+	height:40px; 
+	background-color:#CCCCCC;
+}
+.table1{
+	width: 800px;
+	height: 532px;
+	border: 1px solid rgb(100%,100%,100%);
+}
+.caption{
+	float: left;
+	width: 90px;
+	height: 48px;
+	border: 1px solid rgb(100%,100%,100%);	
+	text-justify: auto;
+	text-align: center;
+	line-height: 50px;
+	font-weight: bold;
+}
+.line120{
+	float: left;
+	width: 675px;
+	height: 146px;
+}
+.line60{
+	float: left;
+	width: 800px;
+	height: 48px;
+}
+.line40{
+	float: left;
+	width: 677px;
+	height: 48px;
+}
+#reset{
+	margin-top: 40px;
+	margin-left:40px;
+	height: 40px;
+	width: 80px;
+	margin-bottom: 32px;
+}
+#confim{
+	margin-top: 40px;
+	margin-left: 600px;
+	height: 40px;
+	width: 80px;
+	margin-bottom: 32px;
+}
+#student_name{
+	float: left;
+	width: 156px;
+	height: 48px;
+	border: 1px solid rgb(100%,100%,100%);	
+	text-justify: auto;
+	text-align: center;
+	line-height: 50px;
+	
+}
+#student_major{
+	float: left;
+	width: 341px;
+	height: 48px;
+	border: 1px solid rgb(100%,100%,100%);	
+	text-justify: auto;
+	text-align: center;
+	line-height: 50px;
+	
+}
+#student_number{
+	float: left;
+	width: 156px;
+	height: 48px;
+	border: 1px solid rgb(100%,100%,100%);	
+	text-justify: auto;
+	text-align: center;
+	line-height: 50px;
+	
+}
+#student_class{
+	float: left;
+	width: 341px;
+	height: 48px;
+	border: 1px solid rgb(100%,100%,100%);	
+	text-justify: auto;
+	text-align: center;
+	line-height: 50px;
+	
+}
+#student_sex{
+	float: left;
+	width: 156px;
+	height: 48px;
+	border: 1px solid rgb(100%,100%,100%);	
+	text-justify: auto;
+	text-align: center;
+	line-height: 50px;
+	
+}
+#native_place{
+	float: left;
+	width: 141px;
+	height: 48px;
+	border: 1px solid rgb(100%,100%,100%);	
+	text-justify: auto;
+	text-align: center;
+	line-height: 50px;
+	
+}
+#nation{
+	float: left;
+	width: 110px;
+	height: 48px;
+	border: 1px solid rgb(100%,100%,100%);	
+	text-justify: auto;
+	text-align: center;
+	line-height: 50px;
+	
+}
+#student_photo{
+	float: left;
+	width: 121px;
+	height: 144px;
+	border: 1px solid rgb(100%,100%,100%);	
+	text-justify: auto;
+	text-align: center;
+	line-height: 20px;
+	margin-left: 2px;
+}
+#student_telnumber{
+	float: left;
+	width: 156px;
+	height: 48px;
+	border: 1px solid rgb(100%,100%,100%);	
+	text-justify: auto;
+	text-align: center;
+	line-height: 50px;
+}	
+#qq_number{
+	float: left;
+	width: 141px;
+	height: 48px;
+	border: 1px solid rgb(100%,100%,100%);	
+	text-justify: auto;
+	text-align: center;
+	line-height: 50px;
+}
+#email_add{
+	float: left;
+	width: 232px;
+	height: 48px;
+	border: 1px solid rgb(100%,100%,100%);	
+	text-justify: auto;
+	text-align: center;
+	line-height: 50px;
+}	
+#political{
+	float: left;
+	width: 156px;
+	height: 48px;
+	border: 1px solid rgb(100%,100%,100%);	
+	text-justify: auto;
+	text-align: center;
+	line-height: 50px;
+}
+#student_id_number{
+	float: left;
+	width: 233px;
+	height: 48px;
+	border: 1px solid rgb(100%,100%,100%);	
+	text-justify: auto;
+	text-align: center;
+	line-height: 50px;
+}
+#birthday{
+	float: left;
+	width: 139px;
+	height: 48px;
+	border: 1px solid rgb(100%,100%,100%);	
+	text-justify: auto;
+	text-align: center;
+	line-height: 50px;
+}	
+#dormitory_build{
+	float: left;
+	width: 156px;
+	height: 48px;
+	border: 1px solid rgb(100%,100%,100%);	
+	text-justify: auto;
+	text-align: center;
+	line-height: 50px;
+}	
+#dormitory_number{
+	float: left;
+	width: 49px;
+	height: 48px;
+	border: 1px solid rgb(100%,100%,100%);	
+	text-justify: auto;
+	text-align: center;
+	line-height: 50px;
+}
+#specialty{
+	float: left;
+	width: 323px;
+	height: 48px;
+	border: 1px solid rgb(100%,100%,100%);	
+	text-justify: auto;
+	text-align: center;
+	line-height: 50px;
+}	
+#census_migration{
+	float: left;
+	width: 156px;
+	height: 48px;
+	border: 1px solid rgb(100%,100%,100%);	
+	text-justify: auto;
+	text-align: center;
+	line-height: 50px;
+}
+#pop_location{
+	float: left;
+	width: 141px;
+	height: 48px;
+	border: 1px solid rgb(100%,100%,100%);	
+	text-justify: auto;
+	text-align: center;
+	line-height: 50px;
+}
+#prov_exam{
+	float: left;
+	width: 231px;
+	height: 48px;
+	border: 1px solid rgb(100%,100%,100%);	
+	text-justify: auto;
+	text-align: center;
+	line-height: 50px;
+}	
+#student_type{
+	float: left;
+	width: 156px;
+	height: 48px;
+	border: 1px solid rgb(100%,100%,100%);	
+	text-justify: auto;
+	text-align: center;
+	line-height: 50px;
+}
+#before_college{
+	float: left;
+	width: 231px;
+	height: 48px;
+	border: 1px solid rgb(100%,100%,100%);	
+	text-justify: auto;
+	text-align: center;
+	line-height: 50px;
+}
+#student_cate{
+	float: left;
+	width: 141px;
+	height: 48px;
+	border: 1px solid rgb(100%,100%,100%);	
+	text-justify: auto;
+	text-align: center;
+	line-height: 50px;
+}
+#address_number{
+	float: left;
+	width: 156px;
+	height: 48px;
+	border: 1px solid rgb(100%,100%,100%);	
+	text-justify: auto;
+	text-align: center;
+	line-height: 50px;
+}
+#home_tel_number{
+	float: left;
+	width: 141px;
+	height: 48px;
+	border: 1px solid rgb(100%,100%,100%);	
+	text-justify: auto;
+	text-align: center;
+	line-height: 50px;
+}
+#home_address{
+	float: left;
+	width: 231px;
+	height: 48px;
+	border: 1px solid rgb(100%,100%,100%);	
+	text-justify: auto;
+	text-align: center;
+	line-height: 50px;
+	text-overflow: clip;
+}	
+#dad_neme{
+	float: left;
+	width: 156px;
+	height: 48px;
+	border: 1px solid rgb(100%,100%,100%);	
+	text-justify: auto;
+	text-align: center;
+	line-height: 50px;
+}
+#mom_name{
+	float: left;
+	width: 156px;
+	height: 48px;
+	border: 1px solid rgb(100%,100%,100%);	
+	text-justify: auto;
+	text-align: center;
+	line-height: 50px;
+}	
+#dad_work_add{
+	float: left;
+	width: 233px;
+	height: 48px;
+	border: 1px solid rgb(100%,100%,100%);	
+	text-justify: auto;
+	text-align: center;
+	line-height: 50px;
+}	
+#mom_work_add{
+	float: left;
+	width: 233px;
+	height: 48px;
+	border: 1px solid rgb(100%,100%,100%);	
+	text-justify: auto;
+	text-align: center;
+	line-height: 50px;
+}
+#dad_tel_number{
+	float: left;
+	width: 139px;
+	height: 48px;
+	border: 1px solid rgb(100%,100%,100%);	
+	text-justify: auto;
+	text-align: center;
+	line-height: 50px;
+}		
+#mom_tel_number{
+	float: left;
+	width: 139px;
+	height: 48px;
+	border: 1px solid rgb(100%,100%,100%);	
+	text-justify: auto;
+	text-align: center;
+	line-height: 50px;
+}
+
+				

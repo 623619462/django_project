@@ -1,0 +1,3 @@
+// JavaScript Document
+function checkForm() { //提交时确定提示 
+	if (window.confirm("
