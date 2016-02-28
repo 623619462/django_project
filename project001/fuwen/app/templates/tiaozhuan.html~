@@ -1,0 +1,14 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<title>Search</title>
+</head>
+<body>
+<h1>搜索</h1>
+<form action="." method="GET">
+<label for="q">Search: </label>
+{{form.as_p}} {% csrf_token %}
+<input type='submit' value='搜索'></input>
+</form>
+</body>
+</html>

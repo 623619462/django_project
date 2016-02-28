@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8" />
+<title>留言</title>
+</head>
+<body>
+<p>你好</p>
+<a href="http://127.0.0.1:8000/blog/logout/">退出</a>
+<form method="post" action=".">
+{{form.as_p}} {% csrf_token %}
+<input type="submit" value="发表"></input>
+</form>
+</body>
+</html>

@@ -1,0 +1,14 @@
+一.集成富文本编辑器：
+1.在settings中加入app：‘DjangoUeditor’
+2.在models中进行定义，UEditorField继承自Textfield。传入参数配置 推荐采用默认值，因为django版本变更有些参数的参数名可能出现了变化。文件上传路径默认为{{MEDIA_ROOT}}
+无需更改
+3.在urls中添加：url(r'^ueditor/',include('DjangoUeditor.urls' ))
+4.在admin中导入models模型admin.site.register(Blog)
+5.同步数据库
+6.运行collectstatic命令，将所依赖的css,js之类的文件复制到{{STATIC_ROOT}}文件夹里面。
+7.将静态文件同步至工程目录之下后配置static 和 media的路径，{{MEDIA_ROOT}}路径设置在在app目录下的static目录中
+二.搜索引擎：搜索引擎使用了django内置的字符匹配功能，可对产生标题与目录中包含关键字的结果集，通过views渲染到模板中，搜索函数为views中search函数，urls配置为url(r'^search/$','app.views.search')
+在每个需要搜索功能的页面模板中加入一个form标签，将表单获取的搜索关键字传入后台，并在相应的视图函数中添加一个条件判断，若表单内容不为空且被提交，则由视图函数实现网页跳转并将关键字传至搜索页面。如本项目在主页中的样例。
+在search函数中，搜索条件可在filter方法的参数中进行更改，Q对象用于对关键字参数进行封装，从而可以对多个条件进行逻辑运算。
+若models不止一种，则在if条件句用相同方法产生其他几个结果集，合并后渲染至模板即可
+

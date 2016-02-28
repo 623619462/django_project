@@ -1,0 +1,20 @@
+from app.models import Blog
+from django.shortcuts import render_to_response
+from django.http import HttpResponseRedirect
+from django.db.models import Q
+def main(request):
+	query = request.GET.get('q', '')
+	if query:
+		http='/search/?q='+query
+		return HttpResponseRedirect(http)
+	msg1 = Blog.objects.all()
+	return render_to_response('main.html',{'msg1':msg1})
+
+def search(request):
+	query = request.GET.get('q', '')
+	if query:
+		results = Blog.objects.filter(Q(text__icontains=query)|Q(name__icontains=query))
+	else:
+		results = []
+	return render_to_response("search.html", {"results": results,"query": query})
+
