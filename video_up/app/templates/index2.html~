@@ -1,0 +1,65 @@
+{% extends "base.html" %}
+{% block title %}信息管理系统{% endblock %}
+{% block content %}
+<div class="am-container main-box">
+    <table class="am-table am-table-hover am-table-compact log-table am-text-center am-table-striped">
+      <thead>
+        <tr>
+          <th>复选框</th>
+          <th>线路编号</th>
+          <th>线路名称</th>
+          <th>异常类</th>
+          <th>时间</th>
+        </tr>
+      </thead>
+      <tbody>
+	{% for record in records %}
+        <tr>
+          <td>
+	    <label>
+              <input type="checkbox"> 
+      	    </label>
+          </td>
+          <td>{{record.cid}}</td>
+          <td>{{record.name}}</td>
+          <td>{{record.algorithm}}</td>
+          <td>{{record.time}}</td>
+        </tr>
+        {% endfor %}
+        
+      <tbody>
+    </table>
+    <div>
+      <ul class="am-pagination am-pagination-right">
+  	<li class="am-disabled"><a href="#">&laquo;</a></li>
+  	<li class="am-active"><a href="#">1</a></li>
+  	<li><a href="#">2</a></li>
+  	<li><a href="#">3</a></li>
+  	<li><a href="#">4</a></li>
+  	<li><a href="#">5</a></li>
+  	<li><a href="#">&raquo;</a></li>
+      </ul>
+    </div>
+<div>
+ <ul class="am-pagination am-pagination-right">
+{% if records.has_previous %}
+<li><a href="?page={{students.previous_page_number }}"title="Pre">&laquo;</a></li> {% endif %}
+{% for p in page_range %}
+{% ifequal p records.number %}
+<li><span style="font-size:16px;" title="当前页"><b>{{p}}</b></span></li>        
+{% else %}<li><a href="?page={{p}}" title="第{{p}}页">{{p}}</a></li>{% endifequal %}
+{% endfor %}     
+{% if records.has_next %}
+<li><a href="?page={{ page_objects.next_page_number }}" title="Next">&raquo;</a></li>
+ {% endif %}
+  
+<big>
+
+{%if students.paginator.num_pages%}共 {{ students.paginator.num_pages }} 页{%endif%}
+</big>
+  </ul>
+</div>
+<div class="clear"></div>
+</div>
+
+{% endblock %}

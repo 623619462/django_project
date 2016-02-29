@@ -1,0 +1,18 @@
+from pymongo import MongoClient
+import time 
+
+class VideoLog(object):
+	def __init__(self):
+		self.client = MongoClient('localhost',10001)
+		self.db=self.client.video		
+		self.col = self.db.log
+		return 
+
+	def insert(self,name,algorithm,result):
+		time_now=time.strftime('%Y-%m-%d-%H:%M:%S')
+		order=time.strftime('%Y%m%d%H%M%S')
+		self.col.insert({"name":name,"algorithm":algorithm,"result":result,'time':time_now,'order':order})
+		return
+
+	
+		

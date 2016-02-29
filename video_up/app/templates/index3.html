@@ -1,0 +1,257 @@
+{% extends "base.html" %}
+{% block title %}信息管理系统{% endblock %}
+{% block content %}
+<div class="am-container main-box">
+    <div class="am-panel-group" id="accordion">
+	  <div class="am-panel am-panel-default conf-box" id="camera-conf">
+		<div class="am-panel-hd">
+		  <h3 class="am-panel-title"">
+		    <span class="am-icon-video-camera"></span>
+			摄像头配置
+		  </h3>
+		</div>
+		<div class="am-panel-collapse am-collapse am-in" id="collapse-box">
+		  <div class="am-panel-bd">
+			<table class="am-table am-table-hover am-text-center am-table-striped" id="video-cam-conf-table">
+			  <thead>
+			    <tr>
+				  <th>线路编号</th>
+				  <th>线路名称</th>
+				  <th>检测算法</th>
+				  <th>地址及端口</th>
+				  <th>前缀</th>
+				  <th>后缀</th>
+				</tr>
+			  </thead>
+			  <tbody>
+			{% for config in configs %}
+			    <tr>
+				  <td>{{config.cid}}</td>
+				  <td>{{config.name}}</td>
+				  <td>
+					{% for k in config.algname %}
+					{{k}}
+					{% endfor %}
+				  </td>
+				  <td>{{config.address}}</td>
+				  <td>{{config.prefix}}</td>
+				  <td>{{config.suffix}}</td>
+				</tr>
+			{% endfor %}
+			  </tbody>
+			</table>
+			</div>
+			<div id="operation-box" class="am-text-center">
+			  <button class="am-btn am-btn-default" type="button" id="modify-conf">修改线路</button>
+			  <button class="am-btn am-btn-default" type="button" id="delete-conf">删除线路</button>
+              <button class="am-btn am-btn-default" type="button" id="add-conf">增加线路</button>				  
+			</div>
+			<div class="am-modal am-modal-prompt" tabindex="-1" id="modify-prompt">
+				<div class="am-modal-dialog">
+				  <div class="am-modal-hd">修改线路配置</div>
+				  <div class="am-modal-bd" >
+                    <form class="am-form am-form-horizontal" id="video-conf-form" >
+					  <div class="am-form-group">
+					    <label for="doc-select-1" class="am-u-sm-3 am-form-label"><code>*</code>线路编号</label>
+                        <div class="am-u-sm-9">
+						  <select id="doc-select-1" class="am-modal-prompt-input" required>
+						    <option value="">请选择一路摄像头</option>
+			{% for config in configs %}
+							<option value={{config.cid}}>{{config.cid}}</option>
+			{% endfor %}
+						  </select>
+                        </div>
+                        <div class="clear"></div>
+					  </div>
+					  <div class="am-form-group">
+					    <label for="doc-input-1" class="am-u-sm-4 am-form-label"><code>*</code>线路名称</label>
+						<div class="am-u-sm-8">
+						  <input id="doc-input-1" class="am-modal-prompt-input" type="text" placeholder="线路名称便于区分摄像头" required>
+						</div>
+						<div class="clear"></div>
+					  </div>
+					  <div class="am-form-group">
+					    <label class="am-u-sm-4 am-form-label" for="doc-select-2"><code>*</code>识别算法</label>
+                        <div class="am-u-sm-8">
+						  <select multiple class="am-modal-prompt-input" id="doc-select-2" minchecked="1" >
+        					<option value="1">打架识别</option>
+        					<option value="2">入侵检测</option>
+      					  </select>
+                        </div>
+                        <div class="clear"></div>
+					  </div>
+					  <div class="am-form-group">
+					    <label for="doc-input-2" class="am-u-sm-4 am-form-label"><code>*</code>线路地址及端口</label>
+						<div class="am-u-sm-8">
+						  <input id="doc-input-2" class="am-modal-prompt-input" type="text" placeholder="例如：192.168.1.1:554" 
+						  pattern="^\d{1,3}\.\d{1,3}\.\d{1,3}\.\d{1,3}:\d{1,5}$"  required data-validation-message="请正确输入ip:port">
+						</div>
+						<div class="clear"></div>
+					  </div>
+					  <div class="am-form-group">
+					    <label for="doc-input-3" class="am-u-sm-4 am-form-label">前缀</label>
+						<div class="am-u-sm-8">
+						  <input id="doc-input-3" class="am-modal-prompt-input" type="text" placeholder="rtsp协议中ip地址的前缀部分">
+						</div>
+					  </div>
+					  <div class="am-form-group">
+					    <label for="doc-input-4" class="am-u-sm-4 am-form-label">后缀</label>
+						<div class="am-u-sm-8">
+						  <input id="doc-input-4" class="am-modal-prompt-input" type="text" placeholder="rtsp协议中ip地址的后缀部分">
+						</div>
+					  </div>
+					</form>
+				  </div>
+				  
+				  <div class="am-modal-footer">
+					<span class="am-modal-btn" data-am-modal-cancel>取消</span>
+					<span class="am-modal-btn" data-am-modal-confirm>提交</span>
+				  </div>
+				</div>
+			</div>
+			<div class="am-modal am-modal-prompt" tabindex="-1" id="delete-prompt">
+				<div class="am-modal-dialog">
+				  <div class="am-modal-hd">删除线路</div>
+				  <div class="am-modal-bd" >
+                    <div class="am-form-group">
+						  <select id="doc2-select-1" class="am-modal-prompt-input" required>
+						    <option value="">请选择一路摄像头</option>
+						{%for config in configs%}
+							<option value={{config.cid}}>{{config.name}}</option>
+						{% endfor %}
+						  </select>
+					</div>
+				  </div>
+				  
+				  <div class="am-modal-footer">
+					<span class="am-modal-btn" data-am-modal-cancel>取消</span>
+					<span class="am-modal-btn" data-am-modal-confirm>提交</span>
+				  </div>
+				</div>
+			</div>
+			<div class="am-modal am-modal-prompt" tabindex="-1" id="add-prompt">
+				<div class="am-modal-dialog">
+				  <div class="am-modal-hd">修改线路配置</div>
+				  <div class="am-modal-bd" >
+                    <form class="am-form am-form-horizontal" id="add-conf-form" >
+					  <div class="am-form-group">
+					    <label for="doc3-input-1" class="am-u-sm-4 am-form-label"><code>*</code>线路名称</label>
+						<div class="am-u-sm-8">
+						  <input id="doc3-input-1" class="am-modal-prompt-input" type="text" placeholder="线路名称便于区分摄像头" required>
+						</div>
+						<div class="clear"></div>
+					  </div>
+					  <div class="am-form-group">
+					    <label class="am-u-sm-4 am-form-label" for="doc3-select-2"><code>*</code>识别算法</label>
+                        <div class="am-u-sm-8">
+						  <select multiple class="am-modal-prompt-input" id="doc3-select-2" minchecked="1" >
+        					<option value="1">打架识别</option>
+        					<option value="2">入侵检测</option>
+      					  </select>
+                        </div>
+                        <div class="clear"></div>
+					  </div>
+					  
+					  <div class="am-form-group">
+					    <label for="doc3-input-2" class="am-u-sm-4 am-form-label"><code>*</code>线路地址及端口</label>
+						<div class="am-u-sm-8">
+						  <input id="doc3-input-2" class="am-modal-prompt-input" type="text" placeholder="例如：192.168.1.1:554" 
+						  pattern="^\d{1,3}\.\d{1,3}\.\d{1,3}\.\d{1,3}:\d{1,5}$"  required data-validation-message="请正确输入ip:port">
+						</div>
+						<div class="clear"></div>
+					  </div>
+					  <div class="am-form-group">
+					    <label for="doc3-input-3" class="am-u-sm-4 am-form-label">前缀</label>
+						<div class="am-u-sm-8">
+						  <input id="doc3-input-3" class="am-modal-prompt-input" type="text" placeholder="rtsp协议中ip地址的前缀部分">
+						</div>
+					  </div>
+					  <div class="am-form-group">
+					    <label for="doc3-input-4" class="am-u-sm-4 am-form-label">后缀</label>
+						<div class="am-u-sm-8">
+						  <input id="doc3-input-4" class="am-modal-prompt-input" type="text" placeholder="rtsp协议中ip地址的后缀部分">
+						</div>
+					  </div>
+					</form>
+				  </div>
+				  
+				  <div class="am-modal-footer">
+					<span class="am-modal-btn" data-am-modal-cancel>取消</span>
+					<span class="am-modal-btn" data-am-modal-confirm>提交</span>
+				  </div>
+				</div>
+			</div>
+		  </div>
+		</div>
+	  
+	  <div class="am-panel am-panel-default conf-box" id="algorithm-conf">
+		<div class="am-panel-hd">
+		  <h3 class="am-panel-title">
+		    <span class="am-icon-calculator"></span>
+		    算法配置
+		  </h3>
+		</div>
+		<div class="am-panel-collapse am-collapse am-in">
+		  <div class="am-panel-bd">
+			<div id="algorithm-fighting" class="algorithm-conf-box">
+			  <h4>打架识别</h4>
+              <p>算法置信度：{% for key in fightConfig.items %}{{ key.1 }}{% endfor %}<p>
+			  <form class="am-form-inline" role="form" method="post">
+			    <p>修改置信度</p>‫
+			    <div class="am-form-group">
+			      <label class="am-radio-inline" >
+					<input type="radio" value="0.5" name="fighting-confidence" >0.5
+				  </label>
+				  <label class="am-radio-inline">
+					<input type="radio" value="0.55" name="fighting-confidence" >0.55
+				  </label>
+				  <label class="am-radio-inline">
+					<input type="radio" value="0.6" name="fighting-confidence" > 0.6
+				  </label>
+				  <label class="am-radio-inline">
+					<input type="radio" value="0.65" name="fighting-confidence" > 0.65
+				  </label>
+				  <label class="am-radio-inline">
+					<input type="radio" value="0.7" name="fighting-confidence"> 0.7
+				  </label>
+				  <label class="am-radio-inline">
+					<input type="radio" value="0.75" name="fighting-confidence"> 0.75
+				  </label>
+				  <label class="am-radio-inline">
+					<input type="radio" value="0.8" name="fighting-confidence"> 0.8
+				  </label>
+				  <label class="am-radio-inline">
+					<input type="radio" value="0.85" name="fighting-confidence"> 0.85
+				  </label>
+				  <label class="am-radio-inline">
+					<input type="radio" value="0.9" name="fighting-confidence"> 0.9
+				  </label>				  
+				</div>
+
+			    <button type="submit" class="am-btn am-btn-default">确认修改</button>
+			  </form>			  
+			</div>
+		  </div>
+		</div>
+	  </div>
+	  	  <div class="am-panel am-panel-default conf-box" id="user-conf">
+		<div class="am-panel-hd">
+		  <h3 class="am-panel-title">
+		    <span class="am-icon-user"></span>
+		    个人配置
+		  </h3>
+		</div>
+		<div class="am-panel-collapse am-collapse am-in">
+		  <div class="am-panel-bd">
+		    <div class="conf-content">
+			</div>
+			<div class="conf-form">
+			</div>
+		  </div>
+		</div>
+	  </div>
+	</div>
+<div class="clear"></div>
+</div>
+
+{% endblock %}

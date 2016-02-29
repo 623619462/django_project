@@ -1,0 +1,23 @@
+WSGIPythonPath /home/stu_manage
+<VirtualHost *:8888>
+   # ServerName 127.0.0.1
+    ServerName www.me.uestc.edu.cn
+    ServerAdmin webmaster@localhost
+
+    Alias /static/ /home/stu_manage/static/
+
+
+    <Directory /home/stu_manage/static>
+        Require all granted
+    </Directory>
+
+    WSGIScriptAlias / /home/stu_manage/stu_manage/wsgi.py
+#    WSGIPythonPath /home/center  
+    <Directory /home/stu_manage/stu_manage>
+    <Files wsgi.py>
+        Require all granted
+    </Files>
+    </Directory>
+</VirtualHost>
+
+~          
