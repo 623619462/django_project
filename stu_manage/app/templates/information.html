@@ -91,7 +91,7 @@
                         	<div class="caption">户口迁移</div>
                             <div id="census_migration">{{stu.dommove}}</div>
                             <div class="caption">户口所在地</div>
-                            <div id="pop_location">{{stu.domplacenew}} </div>
+                            <div id="pop_location">{{stu.domplace}} </div>
                             <div class="caption">高考省市</div>
                             <div id="prov_exam"> {{stu.registplace}}</div>                            
                         </div>
@@ -131,7 +131,9 @@
             </div>
 
 {%if auth%}
-            <div style="text-align:center; margin-bottom:-100px; font-size:35px; margin-top:70px;"><b>大学档案</b></div>
+            <div style="text-align:center; margin-bottom:-100px; font-size:35px; margin-top:70px;"><b>大学档案</b></div>{% if auth%}</br>
+<div><a href ="/app/record/?uid={{stu.uid}}"  type="button" class="btn btn-primary "  id="submit">档案修改 </a></div>
+{%endif%}
             <div class="table2 div_dpht">
     			<div class="scholarship">奖学金</div>
                 <div class="scholarbox">
@@ -179,9 +181,6 @@
                 </div>
             </div>
     </div>
-{%endif%}
-{% if auth%}
-<div><a href ="/app/record/?uid={{stu.uid}}"  type="button" class="btn btn-primary "  id="submit">档案修改 </a></div>
 {%endif%}
 {% if not auth%}
 <div><a href ="/app/submit"  type="button" class="btn btn-primary "  id="submit">信息修改 </a></div>

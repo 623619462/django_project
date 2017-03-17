@@ -10,15 +10,15 @@ input{
 	text-align:center;
 	font-size-adjust:inherit;
 	height:28px;
-	line-height:28px;
 	overflow:auto;
 }
 .input_style1{
+	border: 1 px solid;
 	width:140px;
+	height:28px;
 	font-size:16px;
+	text-align:center;
 	text-justify:auto;
-	vertical-align:middle;
-	
 }
 .top{
 	position:fixed; 

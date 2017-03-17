@@ -23,9 +23,9 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 SECRET_KEY = 'mn$&4#-s&aiulbvafx!99@z@y&3)9j5@qjl#v_-q(%d_e1+v0w'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = False
+DEBUG = True
 
-ALLOWED_HOSTS = ['127.0.0.1','localhost','www.me.uestc.edu.cn']
+ALLOWED_HOSTS = ['127.0.0.1','localhost']
 
 ADMINS = (
     ('wangyu', '623619462@qq.com'),
@@ -93,12 +93,14 @@ WSGI_APPLICATION = 'stu_manage.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/1.8/ref/settings/#databases
 
+
+
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.mysql',
-        'NAME': 'tp_stu_home',
+        'NAME': 'stu_info',
 	'USER':'root',
-	'PASSWORD':'weigu)(*',
+	'PASSWORD':'950820',
 	'HOST':'',
 	'PORT':'',
     }

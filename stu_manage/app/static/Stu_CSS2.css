@@ -324,6 +324,7 @@ div{
 	border: 1px solid rgb(100%,100%,100%);
 	text-justify: auto;
 	text-align: center;
+	line-height: 50px;
 	text-overflow: clip;
 }	
 #dad_neme{
@@ -369,7 +370,7 @@ div{
 	border: 1px solid rgb(100%,100%,100%);
 	text-justify: auto;
 	text-align: center;
-
+	line-height: 50px;
 }		
 #mom_tel_number{
 	float: left;
@@ -378,7 +379,7 @@ div{
 	border: 1px solid rgb(100%,100%,100%);
 	text-justify: auto;
 	text-align: center;
-
+	line-height: 50px;
 }
 
 .scholarship{

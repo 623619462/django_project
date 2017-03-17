@@ -6,7 +6,7 @@
    <script src="//cdn.bootcss.com/jquery/1.11.3/jquery.min.js"></script>
    <script src="/static/bootstrap/js/bootstrap.min.js"></script>
 <script type="text/jscript" src="/static/js_form_submit.js"></script>
-
+  <link type="text/css"  rel="stylesheet" href="/static/Stu_CSS2.css">
 <link type="text/css" rel="stylesheet" href="/static/Stu_CSS_Submit.css">
 <title>信息管理系统</title>
 <style>
@@ -58,7 +58,7 @@ _width:expression_r(this.width<200px?"auto":"200px");
                     	<div class="line40">
                     		<div class="caption">姓名</div>
                         	<div id="student_name">
-                            	<input  type="text"   name='name' class="input_style1" placeholder="{{stu.name}}" >
+                            	<input  type="text"   name='name' class="input_style1" placeholder="{{stu.name}}">
                             </div>
                         	<div class="caption">专业</div>
                         	<div id="student_major">
@@ -78,7 +78,7 @@ _width:expression_r(this.width<200px?"auto":"200px");
                             </div>
                         	<div class="caption">班号</div>
                        	    <div id="student_class">
-                            	<input type="text" name='class' style="width:280px; vertical-align:middle;" placeholder="{{stu.class_field}}">
+                            	<input type="text" name='class' style="width:280px;" placeholder="{{stu.class_field}}">
                             </div>
                     	</div>
                     	<div class="line40">
@@ -92,11 +92,11 @@ _width:expression_r(this.width<200px?"auto":"200px");
                             </div>
                         	<div class="caption">籍贯</div>
                         	<div id="native_place">
-                            	<input type="text" placeholder="{{stu.nativeplace}}" name='nativeplace' style="width:120px;vertical-align:middle;">
+                            	<input type="text" placeholder="{{stu.nativeplace}}" name='nativeplace' style="width:120px;">
                             </div>
                         	<div class="caption">民族</div>
                         	<div id="nation">
-                            	<input type="text " placeholder="{{stu.nation}}" name='nation' style="width:90px;vertical-align:middle;">
+                            	<input type="text" placeholder="{{stu.nation}}" name='nation' style="width:90px;">
                             </div>
                    		</div>
                 	</div>
@@ -114,11 +114,11 @@ _width:expression_r(this.width<200px?"auto":"200px");
                             </div>
                             <div class="caption">QQ</div>
                             <div id="qq_number">
-                            	<input type="text" placeholder="{{stu.qq}}" name='qq' style="width:120px;vertical-align:middle;">
+                            	<input type="text" placeholder="{{stu.qq}}" name='qq' style="width:120px;">
                             </div>
                             <div class="caption">邮箱</div>
                             <div id="email_add">
-                            	<input type="email" placeholder="{{stu.email}}" name='email' style="width:210px;vertical-align:middle;">
+                            	<input type="email" placeholder="{{stu.email}}" name='email' style="width:210px;">
                             </div>
                         </div>
                         <div class="line60">
@@ -135,11 +135,11 @@ _width:expression_r(this.width<200px?"auto":"200px");
                             </div>
                             <div class="caption">身份证号</div>
                             <div id="student_id_number">
-                            	<input type="text" placeholder="{{stu.idcard}}" name='id' style="vertical-align:middle;width:210px;">
+                            	<input type="text" placeholder="{{stu.idcard}}" name='id' style="width:210px;">
                             </div>
                             <div class="caption">出生年月</div>
                             <div id="birthday">
-                            	<input type="text" placeholder="{{stu.birth}}" name='birth' style="width:120px;vertical-align:middle;">
+                            	<input type="text" placeholder="{{stu.birth}}" name='birth' style="width:120px;">
                             </div>
                         </div>
                         <div class="line60">
@@ -149,11 +149,11 @@ _width:expression_r(this.width<200px?"auto":"200px");
                             </div>
                             <div class="caption">宿舍（号）</div>
                             <div id="dormitory_number">
-                            	<input type="text" placeholder="{{stu.room}}"  name='room' style="width:40px;vertical-align:middle;">
+                            	<input type="text" placeholder="{{stu.room}}"  name='room' style="width:40px;">
                             </div>
                             <div class="caption">特长</div>
                             <div id="specialty">
-                            	<input type="text" placeholder="{{stu.specialty}}"  name='specialty' style="width:307px;vertical-align:middle;">
+                            	<input type="text" placeholder="{{stu.specialty}}"  name='specialty' style="width:307px;">
                             </div>
                         </div>
                         <div class="line60">
@@ -167,11 +167,11 @@ _width:expression_r(this.width<200px?"auto":"200px");
                             </div>
                             <div class="caption">户口所在地</div>
                             <div id="pop_location">
-                            	<input type="text" name='domplacenew' style="width:130px;vertical-align:middle;" placeholder="{{stu.domplacenew}}">
+                            	<input type="text" name='domplacenew' style="width:130px;" placeholder="{{stu.domplace}}">
                             </div>
                             <div class="caption">高考省市</div>
                             <div id="prov_exam">
-                            	<input type="text" placeholder="{{stu.registplace}}"  name='registplace' style="width:215px;vertical-align:middle;">
+                            	<input type="text" placeholder="{{stu.registplace}}"  name='registplace' style="width:215px;">
                             </div>                            
                         </div>
                         <div class="line60">
@@ -197,7 +197,7 @@ _width:expression_r(this.width<200px?"auto":"200px");
                             </div>
                             <div class="caption">入学前单位</div>
                             <div id="before_college">
-                            	<input type="text" placeholder="{{stu.highschool}}"  name='highschool' style="width:215px;vertical-align:middle;">
+                            	<input type="text" placeholder="{{stu.highschool}}"  name='highschool' style="width:215px;">
                             </div>
                         </div>
                         <div class="line60">
@@ -207,11 +207,11 @@ _width:expression_r(this.width<200px?"auto":"200px");
                             </div>
                             <div class="caption">家庭电话</div>
                             <div id="home_tel_number">
-                            	<input type="tel" placeholder="{{stu.homephone}}"  name='homephone' style="width:130px;vertical-align:middle;">
+                            	<input type="tel" placeholder="{{stu.homephone}}"  name='homephone' style="width:130px;">
                             </div>
                             <div class="caption">家庭地址</div>
                             <div id="home_address">
-                            	<input type="text" placeholder="{{stu.address}}"  name='address' style="width:213px;vertical-align:middle;">
+                            	<input type="text" placeholder="{{stu.address}}"  name='address' style="width:213px;">
                             </div>
                         </div>
                         <div class="line60">
@@ -221,11 +221,11 @@ _width:expression_r(this.width<200px?"auto":"200px");
                             </div>
                             <div class="caption">工作单位</div>
                             <div id="dad_work_add">
-                            	<input type="text" placeholder="{{stu.faworkunit}}"  name='faworkunit' style="width:226px;vertical-align:middle;">
+                            	<input type="text" placeholder="{{stu.faworkunit}}"  name='faworkunit' style="width:226px;">
                             </div>
                             <div class="caption">父亲电话</div>
                             <div id="dad_tel_number">
-                            	<input type="tel" placeholder="{{stu.faphone}}"  name='faphone' style="width:120px;vertical-align:middle;">
+                            	<input type="tel" placeholder="{{stu.faphone}}"  name='faphone' style="width:120px;">
                             </div>
                         </div>
                         <div class="line60">
@@ -235,16 +235,16 @@ _width:expression_r(this.width<200px?"auto":"200px");
                             </div>
                             <div class="caption">工作单位</div>
                             <div id="mom_work_add">
-                            	<input type="text" placeholder="{{stu.maworkplace}}"  name='maworkunit' style="width:226px;vertical-align:middle;">
+                            	<input type="text" placeholder="{{stu.maworkplace}}"  name='maworkunit' style="width:226px;">
                             </div>
                             <div class="caption">母亲电话</div>
                             <div id="mom_tel_number">
-                            	<input type="tel" placeholder="{{stu.maphone}}"  name='maphone' style="width:120px;vertical-align:middle;">
+                            	<input type="tel" placeholder="{{stu.maphone}}"  name='maphone' style="width:120px;">
                             </div>
                         </div>
                         <div class='row'>
-        <div class='col-md-3'>   <input type="submit"  value="提交" id="confim"></div>
-           <div class='col-md-6'>  <input type="reset"  value="重置"  id="reset">  </div>
+           <input type="submit" class = 'col-md-3' value="提交" id="confim">
+           <input type="reset" class='col-md-3' value="重置"  id="reset">
                         </div>
 			</div>
             </div>

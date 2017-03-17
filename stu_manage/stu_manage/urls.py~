@@ -26,5 +26,5 @@ urlpatterns = [
 	url(r'^app/tocsv','app.views.tocsv'),
 	url(r'^app/submit','app.views.submit'),
 	url(r'^app/record','app.views.record'),
-url(r'^static/(?P<path>.*)$','django.views.static.serve',{'document_root':settings.STATIC_ROOT})
+
 ]

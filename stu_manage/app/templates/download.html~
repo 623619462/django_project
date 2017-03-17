@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+<?php
+header("Content-type:application/vnd.ms-excel");
+
+header("Content-Disposition:attachment;filename='downloaded.xls'");
+
+header("Content-Type:application/force-download");
+?>
+<head>
+<meta charset='utf-8'/>
+<title>
+</title>
+</head>
+<body>
+	<h2 float='center'> 列表预览</h2>	
+		<table  border='1'>
+			<thead>
+				<tr>
+				{% autoescape off %}
+						{{response}}
+				{% endautoescape %}
+			</tbody>
+		</table>
+</body>
+</html>

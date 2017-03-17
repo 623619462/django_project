@@ -1,5 +1,5 @@
 """
-WSGI config for center project.
+WSGI config for stu_manage project.
 
 It exposes the WSGI callable as a module-level variable named ``application``.
 
@@ -11,14 +11,6 @@ import os
 
 from django.core.wsgi import get_wsgi_application
 
-#
-#PROJECT_DIR = dirname(dirname(abspath(__file__)))
-BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
-import sys 
-sys.path.insert(0,BASE_DIR) 
-# 
-
 os.environ.setdefault("DJANGO_SETTINGS_MODULE", "stu_manage.settings")
 
 application = get_wsgi_application()
-

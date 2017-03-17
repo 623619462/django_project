@@ -4,9 +4,13 @@
 <meta charset="UTF-8">
 <link href="/static/bootstrap/css/bootstrap.min.css" rel="stylesheet">
    <script src="//cdn.bootcss.com/jquery/1.11.3/jquery.min.js"></script>
-   <script src="/app/static/bootstrap/js/bootstrap.min.js"></script>
-<script type="text/jscript" src="/app/static/js_form_submit.js"></script>
-  <link type="text/css"  rel="stylesheet" href="/app/static/Stu_CSS2.css">
+   <script src="/static/bootstrap/js/bootstrap.min.js"></script>
+<script type="/jscript" src="/static/js_form_submit.js"></script>
+  <link type="/css"  rel="stylesheet" href="/static/Stu_CSS2.css">
+
+
+    <link rel="stylesheet" href="/static/css/style.css" media="screen" type="text/css" />
+
 <title>{% block title %}{% endblock %}</title>
 <style>
 .div_dpht{background:rgba(100%,100%,100%,0.1) none repeat scroll !important; /*实现FF背景透明，文字不透明*/

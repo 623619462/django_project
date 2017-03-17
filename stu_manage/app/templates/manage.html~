@@ -37,20 +37,13 @@
    列表导出</h2>
 </button>
 </div>
-<div class="col-md-3 " ></br>
-<form action="" method="POST">
-<div class="row" div_dpht >
-<div class="col-lg-9 col-xs-9 col-md-9">
-    <div class="input-group">
-      <input type="text" class="form-control"  name ='stuid' placeholder="Search for...">
-      <span class="input-group-btn">
-        <input class="btn btn-default" type="submit" value='Go!' ></input>
-      </span></div>
-    </div><!-- /input-group -->
-  </div><!-- /.col-lg-6 -->
-</div><!-- /.row -->
+  <section class="webdesigntuts-workshop">
+	<form action="" method="POST">		    
+		<input type="search" placeholder="What are you looking for?" name ='stuid'>		    	
+		<button>Search</button>
+	</form>
+</section>
 </br>
-</form>
 
 </div>
 </div>
@@ -125,21 +118,21 @@
 <div class =' div_dpht  '>
 <form name="input" class="text-center" > 
 <label class='btn btn-default'><input type="checkbox" name="vehicle"onclick="btnOnclick()" value="2" />
-C </label>
+专业</label>
 <label class='btn btn-default'><input type="checkbox" name="vehicle"onclick="btnOnclick()" value="3" />
-D</label>
+性别</label>
 <label class='btn btn-default'><input type="checkbox" name="vehicle"onclick="btnOnclick()" value="4"  />
-E</label>
+籍贯</label>
 <label class='btn btn-default'><input type="checkbox" name="vehicle"onclick="btnOnclick()" value="5" />
-F</label>
+手机</label>
 <label class='btn btn-default'><input type="checkbox" name="vehicle"onclick="btnOnclick()" value="6" />
-G</label>
+邮箱</label>
 <label class='btn btn-default'><input type="checkbox" name="vehicle"onclick="btnOnclick()" value="7"  />
-H </label>
+QQ </label>
 <label class='btn btn-default'><input type="checkbox" name="vehicle"onclick="btnOnclick()" value="8" />
-I </label>
+民族</label>
 <label class='btn btn-default'><input type="checkbox" name="vehicle"onclick="btnOnclick()" value="9" />
-J</label>
+特长</label>
 
 </form> 
 
@@ -179,7 +172,7 @@ J</label>
                选择导出信息
             </h4>
          </div>
-<form  method='post'>
+<form  method='post' action="http://127.0.0.1:8000/app/download">
          <div class="modal-body">
 	<div class="btn-group" data-toggle="buttons">
 
@@ -309,4 +302,8 @@ J</label>
 </form>
 </div><!-- /.modal -->
 </div>                    
+
+<div style="text-align:center;clear:both">
+<script src="/gg_bd_ad_720x90.js" type="text/javascript"></script>
+<script src="/follow.js" type="text/javascript"></script>
 {% endblock %}

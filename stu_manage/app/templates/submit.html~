@@ -105,6 +105,28 @@ _width:expression_r(this.width<200px?"auto":"200px");
                         	<p>请上传个人照片</p>
                         	<br>
                         	<input type="file" name="file" style="width:90px;">
+			<img src="" id="img0" width="120px">
+	<script>	
+	$("#file").change(function(){
+	var objUrl = getObjectURL(this.files[0]) ;
+	console.log("objUrl = "+objUrl) ;
+	if (objUrl) {
+		$("#img0").attr("src", objUrl) ;
+	}
+	}) ;
+	//建立一個可存取到該file的url
+	function getObjectURL(file) {
+	var url = null ; 
+	if (window.createObjectURL!=undefined) { // basic
+		url = window.createObjectURL(file) ;
+	} else if (window.URL!=undefined) { // mozilla(firefox)
+		url = window.URL.createObjectURL(file) ;
+	} else if (window.webkitURL!=undefined) { // webkit or chrome
+		url = window.webkitURL.createObjectURL(file) ;
+	}
+	return url ;
+}
+</script>
                         </div>
                     </div>
                     	<div class="line60">
@@ -143,11 +165,11 @@ _width:expression_r(this.width<200px?"auto":"200px");
                             </div>
                         </div>
                         <div class="line60">
-                        	<div class="caption">宿舍<sub>栋</sub></div>
+                        	<div class="caption">宿舍（栋）</div>
                             <div id="dormitory_build">
                             	<input type="text" placeholder="{{stu.building}}" name='building' class="input_style1">
                             </div>
-                            <div class="caption">宿舍<sub>号</sub></div>
+                            <div class="caption">宿舍（号）</div>
                             <div id="dormitory_number">
                             	<input type="text" placeholder="{{stu.room}}"  name='room' style="width:40px;">
                             </div>

@@ -30,7 +30,7 @@
 </div>
 </nav>
 <div class='row div_dpht' >
-<div class='col-md-8 col-xs-8' >
+<div class='col-md-8'>
 <h2 class="text-right" >学生信息列表<!-- 按钮触发模态框 -->
 <button class="btn btn-primary btn-lg " data-toggle="modal" 
    data-target="#myModal">
@@ -38,11 +38,11 @@
 </button>
 </div>
 <div class="col-md-3 " ></br>
-<form action="" method="GET">
+<form action="" method="POST">
 <div class="row" div_dpht >
-<div class="col-lg-9 col-xs-3 col-md-9">
+<div class="col-lg-9 col-xs-9 col-md-9">
     <div class="input-group">
-      <input type="text" class="form-control"  name ='stuid' value='{{stuid}}' placeholder="Search for...">
+      <input type="text" class="form-control"  name ='stuid' placeholder="Search for...">
       <span class="input-group-btn">
         <input class="btn btn-default" type="submit" value='Go!' ></input>
       </span></div>
@@ -147,14 +147,14 @@ QQ </label>
 <nav class="text-center">
   <ul class="pagination">
 {% if students.has_previous %}
-<li><a href="?page={{students.previous_page_number }}&stuid={{stuid}}" title="Pre">上一页</a></li> {% endif %}
+<li><a href="?page={{students.previous_page_number }}" title="Pre">上一页</a></li> {% endif %}
 {% for p in page_range %}
 {% ifequal p students.number %}
 <li><span style="font-size:16px;" title="当前页"><b>{{p}}</b></span></li>        
-{% else %}<li><a href="?page={{p}}&stuid={{stuid}}" title="第{{p}}页">{{p}}</a></li>{% endifequal %}
+{% else %}<li><a href="?page={{p}}" title="第{{p}}页">{{p}}</a></li>{% endifequal %}
 {% endfor %}     
 {% if students.has_next %}
-<li><a href="?page={{ students.next_page_number }}&stuid={{stuid}}" title="Next">下一页</a></li>
+<li><a href="?page={{ page_objects.next_page_number }}" title="Next">下一页</a></li>
  {% endif %}  
 <big>
 
@@ -179,14 +179,10 @@ QQ </label>
                选择导出信息
             </h4>
          </div>
-<form  method='post'>
+<form  method='post' action="http://127.0.0.1:8000/app/download">
          <div class="modal-body">
 	<div class="btn-group" data-toggle="buttons">
 
-<div class="input-group">
-  <span class="input-group-addon" id="basic-addon1">更改导出条件</span>
-  <input type="text" class="form-control" placeholder="学号" value='{{stuid}}' name='condition' aria-describedby="basic-addon1">
-</div></br>
 <label class='btn btn-primary '>  <input  type='checkbox' value='stu_id' name='choose' > 学号 </label>
 
  <label class='btn btn-primary '>  <input type='checkbox' value='name' name='choose' > 姓名   </label>

@@ -4,7 +4,7 @@ from app.forms import UploadFileForm
 from django.shortcuts import render_to_response
 import xlrd
 from django.db import connection,transaction
-from django.http import HttpResponse,HttpResponseRedirect
+from django.http import HttpResponse,HttpResponseRedirect,StreamingHttpResponse
 from app.models import *
 from django.core.paginator import Paginator,InvalidPage,EmptyPage,PageNotAnInteger
 import csv
@@ -13,11 +13,11 @@ from app.UserAuth import UserAuth
 from app.dict import *
 import MySQLdb
 from django.db.models import Q
-import datetime 
+import datetime
 
-def handle_upload_file(name):
+def handle_upload_file():
 	try:
-		data=xlrd.open_workbook('/home/stu_manage/static/upload/excel/%s'%name)
+		data=xlrd.open_workbook('static/excel.xls')
 	except Exception:
 		return 1
 	table = data.sheet_by_index(0)
@@ -31,19 +31,18 @@ def handle_upload_file(name):
 		str1=stu_dict.get(topic)
 		if str1:
 			l.append(str1+"= %s")
-		else:
+		else:			
 			error_list.append(i)
 	sql=sql+','.join(l)+"  where stu_id = %s"
-
-	conn = MySQLdb.connect(user='root',passwd='weigu)(*',db='tp_stu_home',charset='utf8')
+	conn = MySQLdb.connect(user='root',passwd='950820',db='stu_info',charset='utf8')
 	cursor = conn.cursor()
 	condition=[]
 	for k in range(1,table.nrows):
 		list_con=table.row_values(k)
                	for j in error_list:
-                       list_con[j]='wu_nei_rong'
+                       list_con[j]=''
                 for j in error_list:
-                       list_con.remove('wu_nei_rong')
+                       list_con.remove('')
 		list1=list_con[1:]
 		list1.append(list_con[0])
 		condition.append(list1)
@@ -63,27 +62,30 @@ def upload(request):
 		return HttpResponseRedirect('http://www.me.uestc.edu.cn/stu/index.php/Login/')
 	if request.method == "POST":
 		form = UploadFileForm(request.POST,request.FILES)
-		name= datetime.datetime.now().strftime("%Y-%m-%d-%H:%M:%S")+request.FILES['files'].name.encode('utf8')	
 		typ=request.FILES['files'].name.split('.')[1]
 		if not (typ=='xls' or typ=='xlsx'):
 			return  HttpResponse("<h1>上传失败 只能上传excel文件</h1></br><a href='upload'>返回重新上传</a>")
 		if form.is_valid():
-			files = open('/home/stu_manage/static/upload/excel/%s'%name,'w+')
+			files = open('static/excel.xls','w+')
 			for chunk in request.FILES['files'].chunks():
 				files.write(chunk)
 			files.close()
-			up_suc=handle_upload_file(name)
+			up_suc=handle_upload_file()
 			if up_suc :
 				q=u"上传失败，请以学号为第一列！"
 			else:
 				q=u"上传成功！"
-			form = UploadFileForm()
-			return render_to_response('upload.html', {'form': form,'q':q})
+			return render_to_response('success.html',{'q':q})
+		
 	else :
 		form = UploadFileForm()
 	return render_to_response('upload.html', {'form': form})
 
-
+def setcookie(request):
+	response = HttpResponse('<a href="entrance">点击后跳转</a>')
+	response.set_cookie("me_uid",1912)
+	response.set_cookie("me_key",u'9aaefc2319a96f3b561fe95a84bee2ba')
+	return response
 	
 def entrance(request):
 	l=[1,2,3,4,65,69]
@@ -100,11 +102,13 @@ def entrance(request):
 		return HttpResponseRedirect('manage/')
 	else:	
 		if mem:
-			href="http://www.me.uestc.edu.cn:8888/app/information"
+			href="http://127.0.0.1:8000/app/information"
 			return HttpResponseRedirect(href)
-	response="<h1 style='text-align:center;' >抱歉，本网站暂时只对本科生开放/h1>"
+	response="<h1 style='text-align:center;' >抱歉，本网站暂时只对本科生开放</h1>"
 	return HttpResponse(response)
 
+
+stuid='2'
 def manage(request):
 	try:
 		uid=request.COOKIES['me_uid']
@@ -114,16 +118,17 @@ def manage(request):
 	if not auth:
 		return HttpResponseRedirect('http://www.me.uestc.edu.cn/stu/index.php/Login/')
 	label=[]
-	stuid=request.GET.get('stuid','')
-	page_size=14
+	global stuid
+	page_size=15
 	after_range_num = 3
 	before_range_num = 3 
-	if  stuid:
+	if  request.POST.get('stuid', ''):
+		stuid = request.POST.get('stuid', '')
 		student=Information.objects.filter(Q( stu_id__contains = stuid ) | Q( name__contains = stuid ))	
 	else:
 		student= Information.objects.all()
  	for i in student:
-		q="http://www.me.uestc.edu.cn:8888/app/information/?uid=" +str(i.uid)
+		q="http://127.0.0.1:8000/app/information/?uid=" +str(i.uid)
 		i.set_url(q) 
 	try:
 		page = int(request.GET.get("page",1))
@@ -139,29 +144,8 @@ def manage(request):
 	if page >= after_range_num:
 		page_range = paginator.page_range[page-after_range_num:page+before_range_num]
 	else:
-		page_range = paginator.page_range[0:int(page)+before_range_num]
-	if request.POST.getlist('choose',''):
-		condition=request.POST.get('condition','2')
-		row=request.POST.getlist('choose')
-		first_row=[]
-		for i in row:
-			first_row.append(name_dict.get(i).encode('utf8'))	
-		response = HttpResponse(content_type='text/csv')  
-		response['Content-Disposition'] = 'attachment; filename=stu_list.csv'  
-		writer = csv.writer(response) 
-		writer.writerow(first_row)
-		cursor = connection.cursor()
-		sql='select '+','.join(row)+" from information where stu_id like '%s%%'  or name like '%%%s%%' "
-		q=cursor.execute(sql%(condition,condition))
-		for i in cursor.fetchmany(q):
-			l=[]
-			for k in i:
-				if not k:
-					k=u'无'
-				l.append(k.encode('utf8'))
-			writer.writerow(l)
-		return response 
-	return	render_to_response('manage.html', {'students': students,"page_range":page_range,"auth":auth,"stuid":stuid})
+		page_range = paginator.page_range[0:int(page)+before_range_num] 
+	return	render_to_response('manage.html', {'students': students,"page_range":page_range,"auth":auth})
 
 def information(request):
 	try:
@@ -195,9 +179,8 @@ def submit(request):
 			except IOError:
 				return HttpResponse("<h1>上传失败，只能上传图片哦</h1>")
 			image = image.resize((120,144),Image.ANTIALIAS)
-			fname= datetime.datetime.now().strftime("%Y-%m-%d %H:%M:%S-")+str(uid)+'.jpg'
-			image_name = "/static/upload/portrait/"+fname
-			image.save(open('/home/stu_manage/static/upload/portrait/'+fname,'w+'), format="JPEG")
+			image_name = "/static/upload/%s.jpg " %uid
+			image.save(open('static/upload/%s.jpg'%uid,'w+'), format="JPEG")
 			cursor = connection.cursor()
 			cursor.execute("update portrait set portrait ='%s' where uid = %s "% (image_name,uid))
 		l=[]
@@ -233,7 +216,34 @@ def record(request):
 				l.append(key+" = '%s'"%request.POST.get(key))
 		if l:
 			sql=sql+','.join(l)+"  where uid = '%s'"%uid
+			print sql
 			cursor = connection.cursor()
 			cursor.execute(sql)
-			return HttpResponseRedirect('http://www.me.uestc.edu.cn:8888/app/information/?uid=%s'%uid)
+			return HttpResponseRedirect('http://127.0.0.1:8000/app/information/?uid=%s'%uid)
 	return render_to_response('record.html',{'stu':stu})
+
+def download(request):
+	if request.POST.getlist('choose',''):
+		row=request.POST.getlist('choose')
+		response="<!DOCTYPE html><html><head><meta charset='utf-8'/><title></title></head><body><table  border='1'><thead><tr>"
+		for k in row:				
+			response +="<th>"+name_dict.get(k)+"</th>"
+		print response	
+		response+="</tr></thead><tbody>"	
+		cursor = connection.cursor()
+		sql='select '+','.join(row)+" from information where stu_id like '%s%%' or name like '%%%s%%'"
+		stuid='2013030106' 
+		sql=sql % (stuid,stuid)
+		q=cursor.execute(sql)
+		for i in cursor.fetchmany(q):
+			response +="<tr>"
+			for k in i:
+				response +='<th>'+k+"</th>"
+			response +="</tr>"
+		response+="</tbody></table></body></html>"
+		filename='download.xls'
+		response = StreamingHttpResponse(response) 
+		response['Content-Type'] = 'application/octet-stream'
+		response['Content-Disposition'] = 'attachment; filename=%s' %filename
+		return response
+#		return HttpResponse(response)

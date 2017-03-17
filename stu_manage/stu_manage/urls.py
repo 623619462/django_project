@@ -17,12 +17,15 @@ from django.conf.urls import include, url
 from django.contrib import admin
 
 urlpatterns = [
-   
+    url(r'^admin/', include(admin.site.urls)),
 	url(r'^app/upload/','app.views.upload'),
+	url(r'^app/setcookie','app.views.setcookie'),
 	url(r'^app/entrance','app.views.entrance'),
 	url(r'^app/information/','app.views.information'),
 	url(r'^app/manage/','app.views.manage'),
 	url(r'^app/tocsv','app.views.tocsv'),
 	url(r'^app/submit','app.views.submit'),
 	url(r'^app/record','app.views.record'),
+	url(r'^app/download','app.views.download')
+
 ]
